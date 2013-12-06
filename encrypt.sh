@@ -13,9 +13,10 @@ if [[ $# == 3 ]]; then
   outfile=$3
 fi
 
-pubkey=/tmp/$RANDOM.pub
+pubkey=/tmp/$user.$RANDOM.pub
 
-wget github.com/$user.keys -O $pubkey --quiet
+wget github.com/$user.keys --quiet -qO- > $pubkey #-O $pubkey
+#wget github.com/$user.keys --quiet -qO- | tail -n 1 > $pubkey #-O $pubkey
 
 # Need a pem file, so we convert it
 ssh-keygen -f $pubkey -e -m PKCS8 > $pubkey.pem

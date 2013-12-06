@@ -2,6 +2,7 @@
 
 if [[ $# < 2 ]]; then
   echo "Usage: $0 <github user> <infile> [outfile]"
+  exit
 fi
 
 user=$1
@@ -12,9 +13,14 @@ if [[ $# == 3 ]]; then
   outfile=$3
 fi
 
-wget github.com/$user.keys -O id_rsa.pub
+pubkey=/tmp/$RANDOM.pub
 
-# Encrypt
-# Need a pem file
-ssh-keygen -f id_rsa.pub -e -m PKCS8 > id_rsa.pem.pub # make a pem file
-openssl rsautl -encrypt -pubin -inkey id_rsa.pem.pub -ssl -in $infile -out $outfile
+wget github.com/$user.keys -O $pubkey --quiet
+
+# Need a pem file, so we convert it
+ssh-keygen -f $pubkey -e -m PKCS8 > $pubkey.pem
+openssl rsautl -encrypt -pubin -inkey $pubkey.pem -ssl -in $infile -out $outfile
+
+# Clean up
+rm $pubkey
+rm $pubkey.pem

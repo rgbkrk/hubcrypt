@@ -2,6 +2,7 @@
 
 if [[ $# < 3 ]]; then
   echo "Usage: $0 <id_rsa> <infile> <outfile>"
+  exit 1
 fi
 
 key=$1

@@ -2,7 +2,7 @@
 
 if [[ $# < 2 ]]; then
   echo "Usage: $0 <github user> <infile> [outfile]"
-  exit
+  exit 1
 fi
 
 user=$1

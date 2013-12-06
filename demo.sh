@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 user=$1
 infile=$2
 outfile=$2.enc

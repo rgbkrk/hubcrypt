@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+# Encrypts a small message (< 245 bytes) using a github user's public key as
+# pulled from github.com/<user>.keys
+
+# This is silliness, don't use it in production
+
 if [[ $# < 2 ]]; then
   echo "Usage: $0 <github user> <infile> [outfile]"
   exit 1

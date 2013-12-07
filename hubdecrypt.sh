@@ -4,7 +4,8 @@
 # Decrypt a file encrypted using hubencrypt (ok, it's just openssl + rsautl +
 # your SSH keys). It needs the private key that matches your first public key
 # listed at github.com/<user>.keys
-#
+
+# Note that this is silliness and shouldn't be used in production.
 
 if [[ $# < 3 ]]; then
   echo "Usage: $0 <id_rsa> <infile> <outfile>"

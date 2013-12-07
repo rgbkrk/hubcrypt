@@ -3,6 +3,9 @@
 # Encrypts a small message (< 245 bytes) using a github user's public key as
 # pulled from github.com/<user>.keys
 
+# Note: This assumes that the key is an RSA public key and that the key size
+#       is 2048 bits
+
 # This is silliness, don't use it in production
 
 if [[ $# < 2 ]]; then

@@ -70,7 +70,7 @@ You can copy the shell scripts to wherever you like, then it's simply a matter o
 
 Alternatively, just steal the `openssl` and `ssh-keygen` commands and roll like a boss. You will miss out on the ever so insightful error messages.
 
-## \* Message size (is based on key size)
+## \* Maximum Message size (is based on key size)
 
 The typical key size when people run `ssh-keygen` is 2048 bits. You can make that beefier or leaner at your own discretion.
 

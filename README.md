@@ -1,13 +1,31 @@
-hubcrypt
-========
+# HubCrypt
 
 :closed_lock_with_key: for your :octocat:
 
+## Description
+
 Encrypt \*short messages using a GitHub user's public key.
 
-Note that hubcrypt chooses the last key listed by default.
+### Encryption:
 
-# About
+```
+$ ./bin/hubencrypt.sh smashwilson secrets.txt secrets.txt.enc
+Getting the key for smashwilson
+Converting public key to a PEM PKCS8 public key
+Encrypting message
+All done, cleaning up!
+```
+
+### Decryption:
+
+```
+$ ./bin/hubdecrypt.sh ~/.ssh/id_rsa secrets.txt.enc secrets.txt
+Enter pass phrase for /home/ash/.ssh/id_rsa:
+$ cat secrets.txt
+Drink more ovaltine.
+```
+
+## About
 
 hubcrypt relies on the fact that you (probably) already have public and private keypairs, the public keys of which are readily accessible through GitHub's API. You use them to push code and log in to servers. They're not limited to those tasks though, as they can be used to encrypt arbitrary data.
 
@@ -17,13 +35,13 @@ Jokingly, I said to someone that if they wanted to share a small secret with ano
 
 Shortly after I found out that [others](https://github.com/twe4ked/catacomb) had done [variations on this](https://github.com/jschauma/jass) before.
 
-# Requirements
+## Requirements
 
 The recipient needs to be using an RSA key and have it listed as the last key on `github.com/<user>.keys`. Linux and OS X before Mavericks should work well.
 
 If your machine doesn't support ssh-keygen properly, submit an issue and I'll bemoan that I don't have a box to test it on for you. Feel free to send us a brand new laptop to test your flavor of operating system with.
 
-# Example Usage
+## Example Usage
 
 ```shell
 $ git clone https://github.com/rgbkrk/hubcrypt.git
@@ -43,7 +61,7 @@ $ cat secrets.txt
 Drink more ovaltine.
 ```
 
-# \* Message size (is based on key size)
+## \* Message size (is based on key size)
 
 The typical key size when people run `ssh-keygen` is 2048 bits. You can make that beefier or leaner at your own discretion.
 

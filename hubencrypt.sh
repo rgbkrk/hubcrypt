@@ -1,13 +1,29 @@
 #!/usr/bin/env bash
 
-# Encrypts a small message (< 245 bytes) using a github user's public key as
-# pulled from github.com/<user>.keys
-
-# Note: This assumes that the key is an RSA public key and that the key size
-#       is 2048 bits. Also, if the user has more than one key this will fail
-#       miserably.
-
-# This is silliness, don't use it in production
+#
+# HubCrypt
+# ========
+#
+# Encrypts a small message using a github user's public key as pulled from
+# github.com/<user>.keys
+#
+# The message size you can encrypt depends on the size of the RSA key used.
+#
+# Key size (bits)    Maximum Message Size (bytes)
+# 768                                          85
+# 1024                                        117
+# 2048                                        246
+# 4096                                        502
+# 8192                                       1018
+#
+# The key size (as specified by `-b` when using ssh-keygen) doesn't actually
+# have to be a power of 2, and will give you maximum message sizes in between
+# these ranges.
+#
+# Note: This assumes that the key is an RSA public key, and that the public
+#       key you want to use is the first one listed at github.com/<user>.keys
+#
+#       Also, this is silliness, don't use it in production
 
 if [[ $# < 2 ]]; then
   echo "Usage: $0 <github user> <infile> [outfile]"
@@ -24,7 +40,8 @@ fi
 
 pubkey=/tmp/$user.$RANDOM.pub
 
-wget github.com/$user.keys --quiet -qO- > $pubkey #-O $pubkey
+# Grab the first key because why not?
+wget github.com/$user.keys --quiet -qO- | head -n 1 > $pubkey #-O $pubkey
 #wget github.com/$user.keys --quiet -qO- | tail -n 1 > $pubkey #-O $pubkey
 
 # Need a pem file, so we convert it

@@ -8,7 +8,7 @@ Encrypt \*short messages using a GitHub user's public key.
 
 ### Encryption:
 
-```
+```shell
 $ ./bin/hubencrypt.sh smashwilson secrets.txt secrets.txt.enc
 Getting the key for smashwilson
 Converting public key to a PEM PKCS8 public key
@@ -18,7 +18,7 @@ All done, cleaning up!
 
 ### Decryption:
 
-```
+```shell
 $ ./bin/hubdecrypt.sh ~/.ssh/id_rsa secrets.txt.enc secrets.txt
 Enter pass phrase for /home/ash/.ssh/id_rsa:
 $ cat secrets.txt

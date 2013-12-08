@@ -2,16 +2,16 @@
 
 :closed_lock_with_key: for your :octocat:
 
-Use at your own risk.
+*Use at your own risk.*
 
-## Description
+## Summary
 
 Encrypt \*short messages using a GitHub user's public key.
 
 ### Encryption:
 
 ```shell
-$ ./bin/hubencrypt.sh smashwilson secrets.txt secrets.txt.enc
+$ ./bin/hubencrypt smashwilson secrets.txt secrets.txt.enc
 Getting the key for smashwilson
 Converting public key to a PEM PKCS8 public key
 Encrypting message
@@ -21,7 +21,7 @@ All done, cleaning up!
 ### Decryption:
 
 ```shell
-$ ./bin/hubdecrypt.sh ~/.ssh/id_rsa secrets.txt.enc secrets.txt
+$ ./bin/hubdecrypt ~/.ssh/id_rsa secrets.txt.enc secrets.txt
 Enter pass phrase for /home/ash/.ssh/id_rsa:
 $ cat secrets.txt
 Drink more ovaltine.
@@ -49,21 +49,26 @@ If your machine doesn't support ssh-keygen properly, submit an issue and I'll be
 
 ```shell
 $ git clone https://github.com/rgbkrk/hubcrypt.git
-$ ./bin/hubencrypt.sh smashwilson secrets.txt secrets.txt.enc
+$ ./hubcrypt/bin/hubencrypt smashwilson secrets.txt secrets.txt.enc
 Getting the key for smashwilson
 Converting public key to a PEM PKCS8 public key
 Encrypting message
 All done, cleaning up!
 ```
 
-Later...
+Later, on [smashwilson](https://github.com/smashwilson)'s computer:
 
 ```shell
-$ ./bin/hubdecrypt.sh ~/.ssh/id_rsa secrets.txt.enc secrets.txt
+$ git clone https://github.com/rgbkrk/hubcrypt.git
+$ ./hubcrypt/bin/hubdecrypt ~/.ssh/id_rsa secrets.txt.enc secrets.txt
 Enter pass phrase for /home/ash/.ssh/id_rsa:
 $ cat secrets.txt
 Drink more ovaltine.
 ```
+
+You can copy the shell scripts to wherever you like, then it's simply a matter of running `hubencrypt` and `hubdecrypt`.
+
+Alternatively, just steal the `openssl` and `ssh-keygen` commands and roll like a boss. You will miss out on the ever so insightful error messages.
 
 ## \* Message size (is based on key size)
 

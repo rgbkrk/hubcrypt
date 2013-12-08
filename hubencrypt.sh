@@ -4,7 +4,8 @@
 # pulled from github.com/<user>.keys
 
 # Note: This assumes that the key is an RSA public key and that the key size
-#       is 2048 bits
+#       is 2048 bits. Also, if the user has more than one key this will fail
+#       miserably.
 
 # This is silliness, don't use it in production
 

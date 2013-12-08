@@ -24,7 +24,7 @@ If your machine doesn't support ssh-keygen properly, submit an issue and I'll be
 # Example Usage
 
 ```shell
-$ git clone https://github.com/rgbkrk/hubcrypt
+$ git clone https://github.com/rgbkrk/hubcrypt.git
 $ ./bin/hubencrypt.sh smashwilson secrets.txt secrets.txt.enc
 Getting the key for smashwilson
 Converting public key to a PEM PKCS8 public key

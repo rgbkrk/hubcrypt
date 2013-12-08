@@ -1,5 +1,8 @@
 *.py[cod]
 
+# Local crypt files
+*.enc
+
 # C extensions
 *.so
 

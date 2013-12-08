@@ -52,8 +52,19 @@ wget github.com/$user.keys --quiet -qO- | tail -n 1 > $pubkey #-O $pubkey
 # Need a pem file, so we convert it
 echo "Converting public key to a PEM PKCS8 public key"
 ssh-keygen -f $pubkey -e -m PKCS8 > $pubkey.pem
+
+if [[ $? != 0 ]]; then
+  print "Since there was an error creating the public key, we'll exit"
+  exit 1
+fi
+
 echo "Encrypting message"
 openssl rsautl -encrypt -pubin -inkey $pubkey.pem -ssl -in $infile -out $outfile
+
+if [[ $? != 0 ]]; then
+  print "OpenSSL failed. No encrypting your message."
+  exit 1
+fi
 
 echo "All done, cleaning up!"
 

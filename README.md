@@ -72,7 +72,7 @@ Alternatively, just steal the `openssl` and `ssh-keygen` commands and roll like 
 
 ## \* Maximum Message size (is based on key size)
 
-The typical key size when people run `ssh-keygen` is 2048 bits. You can make that beefier or leaner at your own discretion.
+The typical key size when people run `ssh-keygen` is 2048 bits. You can make that beefier or leaner at your own discretion. The user's choice in keysize affects the size of the message you can send them.
 
 ```
 Key size (bits)    Maximum Message Size (bytes)

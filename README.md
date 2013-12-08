@@ -2,6 +2,8 @@
 
 :closed_lock_with_key: for your :octocat:
 
+Use at your own risk.
+
 ## Description
 
 Encrypt \*short messages using a GitHub user's public key.
@@ -31,9 +33,11 @@ hubcrypt relies on the fact that you (probably) already have public and private 
 
 Normally public keys are used to encrypt a randomly generated session key for use with a symmetric encryption algorithm. The big reason is that asymmetric encryption is typically much slower than symmetric encryption. [PGP](http://en.wikipedia.org/wiki/Pretty_Good_Privacy#Design) for instance uses this exact scheme.
 
-Jokingly, I said to someone that if they wanted to share a small secret with another GitHub user they should just encrypt them with their public SSH key. So, [hubcrypt was born as a gist](https://gist.github.com/rgbkrk/7827691).
+Jokingly, I said to someone that if they wanted to share a small secret with another GitHub user they could just encrypt them with their public SSH key. So, [hubcrypt was born as a gist](https://gist.github.com/rgbkrk/7827691).
 
-Shortly after I found out that [others](https://github.com/twe4ked/catacomb) had done [variations on this](https://github.com/jschauma/jass) before.
+Shortly after I found out that [others](https://github.com/twe4ked/catacomb) had done [variations on this](https://github.com/jschauma/jass) before. Not surprised, I'm always late to the party.
+
+You could of course use GPG and convince the other person you're communicating with to use GPG as well. Or you could just use the SSH keys you already have to encrypt a message. Sure beats sending it over plain.
 
 ## Requirements
 

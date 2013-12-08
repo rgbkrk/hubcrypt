@@ -1,7 +1,9 @@
 hubcrypt
 ========
 
-Encrypt (\*short) messages using a GitHub user's public key.
+:closed_lock_with_key: for your :octocat:
+
+Encrypt \*short messages using a GitHub user's public key.
 
 Note that hubcrypt chooses the last key listed by default.
 
@@ -17,7 +19,7 @@ Shortly after I found out that [others](https://github.com/twe4ked/catacomb) had
 
 # Requirements
 
-The recipient needs to be using an RSA key and have it listed as the last key on github.com/<user>.keys must be the public key for the private key they'll use to decrypt. Linux and OS X before Mavericks should work well.
+The recipient needs to be using an RSA key and have it listed as the last key on `github.com/<user>.keys`. Linux and OS X before Mavericks should work well.
 
 If your machine doesn't support ssh-keygen properly, submit an issue and I'll bemoan that I don't have a box to test it on for you. Feel free to send us a brand new laptop to test your flavor of operating system with.
 
@@ -41,7 +43,7 @@ $ cat secrets.txt
 Drink more ovaltine.
 ```
 
-# Message size (is based on key size)
+# \* Message size (is based on key size)
 
 The typical key size when people run `ssh-keygen` is 2048 bits. You can make that beefier or leaner at your own discretion.
 

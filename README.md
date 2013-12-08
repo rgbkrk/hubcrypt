@@ -6,7 +6,7 @@
 
 ## Summary
 
-Encrypt \*short messages using a GitHub user's public key.
+Encrypt [\*](https://github.com/rgbkrk/hubcrypt/blob/master/README.md#-maximum-message-size-is-based-on-key-size)short messages using a GitHub user's public key.
 
 ### Encryption:
 

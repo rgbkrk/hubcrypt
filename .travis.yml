@@ -1,0 +1,15 @@
+language: python
+
+python:
+ - 2.7
+
+before_install:
+  - if [[ $TRAVIS_PYTHON_VERSION == 'pypy' ]]; then pip install -q --use-mirrors cffi; fi
+  - if [[ $TRAVIS_PYTHON_VERSION != 'pypy' ]]; then pip install -q --use-mirrors cython; fi
+  - pip install -U setuptools
+  - pip install invoke==0.4.0 pytest==2.3.5
+
+install:
+ - pip install .
+
+script: make test

@@ -20,7 +20,9 @@ packages = [
     'hubcrypt'
 ]
 
-requires = []
+requires = [
+        'requests>=2.1.0'
+]
 
 with open('README.md') as f:
     readme = f.read()

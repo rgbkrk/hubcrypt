@@ -1,8 +1,8 @@
 # HubCrypt
 
-:closed_lock_with_key: for your :octocat:
+[![Build Status](https://magnum.travis-ci.com/rgbkrk/hubcrypt.png?token=zrnzC1rKNTsStESZRWcJ&branch=master)](https://magnum.travis-ci.com/rgbkrk/hubcrypt)
 
-*Use at your own risk.*
+:closed_lock_with_key: for your :octocat:
 
 ## Summary
 

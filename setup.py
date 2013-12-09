@@ -3,8 +3,7 @@
 
 import os
 import sys
-
-import hubcrypt
+import re
 
 try:
     from setuptools import setup
@@ -15,6 +14,32 @@ if sys.argv[-1] == 'publish':
     os.system('python setup.py sdist upload')
     os.system('python setup.py bdist_wheel upload')
     sys.exit()
+
+# Backwards compatibility for Python 2.x
+try:
+    from itertools import ifilter
+    filter = ifilter
+except ImportError:
+    pass
+
+
+def get_version():
+    '''
+    Version slurping without importing bookstore, since dependencies may not be
+    met until setup is run.
+    '''
+    version_regex = re.compile(r"__version__\s+=\s+"
+                               r"['\"](\d+.\d+.\d+[-\w]*)['\"]$")
+    versions = filter(version_regex.match, open("hubcrypt/__init__.py"))
+
+    try:
+        version = next(versions)
+    except StopIteration:
+        raise Exception("HubCrypt version not set")
+
+    return version_regex.match(version).group(1)
+
+version = get_version()
 
 packages = [
     'hubcrypt'
@@ -33,7 +58,7 @@ with open('LICENSE') as f:
 
 setup(
     name='hubcrypt',
-    version=hubcrypt.__version__,
+    version=version,
     description='Encrypt messages using a GitHub user\'s public key.',
     long_description=readme + '\n\n' + history,
     author='Kyle Kelley',

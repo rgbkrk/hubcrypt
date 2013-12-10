@@ -3,9 +3,9 @@ import os
 
 import random
 
-import hubcrypt
+import crypthub
 
-class HubcryptTestCase(unittest.TestCase):
+class CryptHubTestCase(unittest.TestCase):
     def setUp(self):
         pass
 
@@ -13,11 +13,11 @@ class HubcryptTestCase(unittest.TestCase):
         pass
 
     def test_entry_points(self):
-        hubcrypt
-        hubcrypt.github
+        crypthub
+        crypthub.github
 
     def test_getkeys(self):
-        public_keys = hubcrypt.github.get_keys('rgbkrk')
+        public_keys = crypthub.github.get_keys('rgbkrk')
         key_id = random.choice(public_keys.keys())
 
         assert 'ssh-rsa' in public_keys[key_id]

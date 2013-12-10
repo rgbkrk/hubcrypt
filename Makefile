@@ -7,7 +7,7 @@ test:
 	py.test
 
 coverage:
-	py.test --verbose --cov-report term --cov=hubcrypt test_hubcrypt.py
+	py.test --verbose --cov-report term --cov=hubcrypt test_crypthub.py
 
 publish:
 	python setup.py sdist upload

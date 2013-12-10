@@ -1,4 +1,4 @@
-# HubCrypt
+# CryptHub
 
 [![Build Status](https://magnum.travis-ci.com/rgbkrk/hubcrypt.png?token=zrnzC1rKNTsStESZRWcJ&branch=master)](https://magnum.travis-ci.com/rgbkrk/hubcrypt)
 

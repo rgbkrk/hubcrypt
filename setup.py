@@ -30,19 +30,19 @@ def get_version():
     '''
     version_regex = re.compile(r"__version__\s+=\s+"
                                r"['\"](\d+.\d+.\d+[-\w]*)['\"]$")
-    versions = filter(version_regex.match, open("hubcrypt/__init__.py"))
+    versions = filter(version_regex.match, open("crypthub/__init__.py"))
 
     try:
         version = next(versions)
     except StopIteration:
-        raise Exception("HubCrypt version not set")
+        raise Exception("crypthub version not set")
 
     return version_regex.match(version).group(1)
 
 version = get_version()
 
 packages = [
-    'hubcrypt'
+    'crypthub'
 ]
 
 requires = [
@@ -57,16 +57,16 @@ with open('LICENSE') as f:
     license = f.read()
 
 setup(
-    name='hubcrypt',
+    name='crypthub',
     version=version,
     description='Encrypt messages using a GitHub user\'s public key.',
     long_description=readme + '\n\n' + history,
     author='Kyle Kelley',
     author_email='rgbkrk@gmail.com',
-    url='http://github.com/rgbkrk/hubcrypt',
+    url='http://github.com/rgbkrk/crypthub',
     packages=packages,
     package_data={'': ['LICENSE']},
-    package_dir={'hubcrypt': 'hubcrypt'},
+    package_dir={'crypthub': 'crypthub'},
     include_package_data=True,
     install_requires=requires,
     license=license,

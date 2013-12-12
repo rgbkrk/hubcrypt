@@ -17,7 +17,8 @@ class HubcryptTestCase(unittest.TestCase):
         hubcrypt.github
 
     def test_getkeys(self):
-        public_keys = hubcrypt.github.get_keys('rgbkrk')
+        gh = hubcrypt.github.GitHub()
+        public_keys = gh.get_keys('rgbkrk')
         key_id = random.choice(public_keys.keys())
 
         assert 'ssh-rsa' in public_keys[key_id]

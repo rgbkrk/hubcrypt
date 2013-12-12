@@ -46,7 +46,8 @@ packages = [
 ]
 
 requires = [
-        'requests>=2.1.0'
+        'requests>=2.1.0',
+        'docopt>=0.6.1'
 ]
 
 with open('README.md') as f:

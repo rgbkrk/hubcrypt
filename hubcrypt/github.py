@@ -35,6 +35,9 @@ class GitHub(object):
         '''
         keys = self.get_keys(username)
 
+        # Coerce to integer to allow for string input
+        key_id = int(key_id)
+
         if(key_id not in keys):
             raise KeyError("Key with ID {} does not exist ".format(key_id) +
                            "for user {}".format(username))

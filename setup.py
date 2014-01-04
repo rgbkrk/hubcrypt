@@ -47,7 +47,8 @@ packages = [
 
 requires = [
         'requests>=2.1.0',
-        'docopt>=0.6.1'
+        'docopt>=0.6.1',
+        'PyCrypto>=2.6.1'
 ]
 
 with open('README.md') as f:

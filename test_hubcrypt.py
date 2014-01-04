@@ -14,6 +14,31 @@ key_dict = {
         6272418: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDYoqGyixCqMPldcF+L+3G9XVRDnEu6zgJP2UZuKlqrzsMkS7uSZZbS8PfV3KtfRyP23FzePNmHQR5/BDoxPYFVf4evppTMZVgGY4Pu+V+NtVh8YRNH5+2ZAR1kEelqF25y02Xnf69xEO1p/aovMoHP6/h8TBjpj2RNndE3efYtwSITvOFsBoZXDtuuFy1zUh7atDnfhEvkKRsR0NeOGcSHJSyMpGO33wnbhE/1ZjQW3iv+RwBM4YpLewOUCGenMUoFQl3589yGofP08FCToPocpEzXdF812zh39116moMTISlTkRuxcYI0X2NMgvREIypl1oW3Ziqs+V1M+BAPqUAx",
 }
 
+pem_of_pub = {
+        6272418: """
+-----BEGIN PUBLIC KEY-----
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA2KKhsosQqjD5XXBfi/tx
+vV1UQ5xLus4CT9lGbipaq87DJEu7kmWW0vD31dyrX0cj9txc3jzZh0EefwQ6MT2B
+VX+Hr6aUzGVYBmOD7vlfjbVYfGETR+ftmQEdZBHpahductNl53+vcRDtaf2qLzKB
+z+v4fEwY6Y9kTZ3RN3n2LcEiE7zhbAaGVw7brhctc1Ie2rQ534RL5CkbEdDXjhnE
+hyUsjKRjt98J24RP9WY0Ft4r/kcATOGKS3sDlAhnpzFKBUJd+fPchqHz9PBQk6D6
+HKRM13RfNds4d/ddepqDEyEpU5EbsXGCNF9jTIL0RCMqZdaFt2YqrPldTPgQD6lA
+MQIDAQAB
+-----END PUBLIC KEY-----
+""".strip(),
+       6089446: """
+-----BEGIN PUBLIC KEY-----
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0ZBk7dyFuLJ3Hrr3qeLH
+KkT8dSBz3e6UW5S2+tdZnAW+WKNdo46er58hIb8a0mPOR1Q1yuKu76Hhtc08AJng
++4idlnl4uWuNlHJVQXE8RtUHj6xb7/TXGZTc9/SfbrX7PB3/kT2zKWtBVsPftEPV
+/Ej2kJJlECp5QZtvZWEu0vw1n6MBdL7uozmhSRxAiIEgOFm7nY1UMg0zb83H33aH
+DHNc+WGhkg7rJSuzmn2QNWg0VoIVNbzVHD9mTdIdyXxreelmrrpCVNfWTbriJduR
+ID7j0xS5atdQIKd6eXFaX6PhcpvYIQs82r8Tyn3qho68av3cAcR/TDfOYN3UgDPG
+9wIDAQAB
+-----END PUBLIC KEY-----
+""".strip()
+}
+
 github_api_response_python = [{"id":key_id, "key": key} for (key_id, key) in key_dict.items()]
 github_api_response = json.dumps(github_api_response_python)
 
@@ -80,7 +105,11 @@ class HubcryptTestCase(unittest.TestCase):
         public_key = gh.get_key('rgbkrk', 6089446)
         assert public_key == key_dict[6089446]
 
-
+    def test_convert_key(self):
+        # Test each of our sample keys
+        for key_id in key_dict:
+            pem_key = hubcrypt.crypt.convert_key(key_dict[key_id])
+            assert pem_key == pem_of_pub[key_id]
 
 if __name__ == '__main__':
     unittest.main()

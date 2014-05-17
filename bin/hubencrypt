@@ -47,7 +47,7 @@ echo "Getting the key for $user"
 # Grab the first key because why not?
 #wget github.com/$user.keys --quiet -qO- | head -n 1 > $pubkey #-O $pubkey
 # Grab the last key because they added it last
-wget github.com/$user.keys --quiet -qO- | tail -n 1 > $pubkey #-O $pubkey
+wget https://github.com/$user.keys --quiet -qO- | tail -n 1 > $pubkey #-O $pubkey
 
 # Need a pem file, so we convert it
 echo "Converting public key to a PEM PKCS8 public key"
